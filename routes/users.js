@@ -7,11 +7,12 @@ usersRouter.get('/', (req, res, next)=>{
     .then((users)=> res.send(users))
     .catch(next)
 })
+
 usersRouter.get('/:id', (req, res) => {
   let { id } = req.params
   Page.findAll({where: { authorId: id }})
     .then((pages) => res.send(pages))
-    .catch()
+    .catch(next)
 })
 
 module.exports = usersRouter
